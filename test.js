@@ -1,5 +1,5 @@
 // Lektion 1 - grunder hur vi sätter upp projektet samt hur vi skapar rum
-
+/* 
 
 import { createServer } from "http";
 import { Server } from "socket.io";
@@ -60,7 +60,7 @@ io.on("connection", (socket) => { // Blir inte en socket utan flera socket...
     io.emit("msg", msgObj)
 
   })
-})
+}) */
 
 // Vi ska jobba med io.on & io.emit...
 
@@ -73,10 +73,10 @@ io.on("connection", (socket) => { // Blir inte en socket utan flera socket...
     console.log(`Server is running on port ${port}`)
 }) */
 
-httpServer.listen(port, () => {
+/* httpServer.listen(port, () => {
   console.log("Server is running on port " + port);
 })
-
+ */
 
 // Repition samt hur man sätter upp två separata projekt och kopplar dem samman (server samt client)
 /* 
@@ -87,7 +87,7 @@ httpServer.listen(port, () => {
 
 // Lektion 2 - fortsättning 
 
-// Gör om adapter till array
+/* // Gör om adapter till array
 const convertRoomMap = () => {
   // Gör om map till listor 
   const convertedArray = Array.from(io.socket.adapter.rooms)
@@ -118,7 +118,7 @@ const convertRoomMap = () => {
   console.log(filteredRooms)
   console.log(io.socket.adapter.rooms)
   console.log(convertedArray)
-  
+   */
 
 
 
