@@ -1,0 +1,17 @@
+###
+
+GET https://localhost:3000/api/cocktails
+
+###
+
+GET https://localhost:3000/api/emojis 
+
+### 
+
+POST http://localhost:3000/
+Content-Type: application/json
+
+{
+  "": "",
+  "": ""
+}
