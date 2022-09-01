@@ -12,7 +12,7 @@ socket.on("'msg'", (msgObj) => {
 
 document.getElementsById("msgBtn")[0].addEventListener("click", () => {
     const msg = document.getElementsById("msg")[0].value
-    socket.emit("msg", {msg, joinedRoom}) // skickar ut meddelande till alla i rummet, kopplat till io.in
+    socket.emit("msg", {msg, joinedRoom}) // skickar ut meddelande till alla i rummet, kopplat till io.in till servern
 })
 
 document.getElementsById("roomBtn")[0].addEventListener("click", () => {
@@ -20,5 +20,8 @@ document.getElementsById("roomBtn")[0].addEventListener("click", () => {
     socket.emit("join", {roomToLeave: joinedRoom, roomToJoin: room})
     joinedRoom = room // sparar rummet
 }) 
+
+
+document.getElementById("getRooms").addEventListener("click", socket..) // Fortsätt här.. 
 
 let nickname = "Kalle" // Ändra så alla inte heter Kalle..
