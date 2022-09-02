@@ -13,7 +13,10 @@ app.use("/", express.static("./client"))
 
 io.on("connection", (socket) => {
     console.log("Socket has connected: " + socket.id)
+    io.emit("newSocket", socket.id)
+    socket.emit("welcome", "Välkommen till chatten!")
 
+    // Här kommer vi lägga till våra egna (join, leave, osv)
 })
 
 /* io.on("connection", (socket) => {
