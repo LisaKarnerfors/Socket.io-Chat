@@ -2,7 +2,7 @@ const socket = io();
 
 
 socket.on("userConnected", (socketId) => {
-    console.log("New socket connected" + " " + socketId);
+    console.log("New user/socket connected " + socketId);
 })
 
 const sendBtn = document.getElementById("msgBtn")

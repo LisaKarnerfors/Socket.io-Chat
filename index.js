@@ -21,7 +21,7 @@ io.on("connection", (socket) => {
         
         // i denna filen är det dessa 3 som är viktiga för att bygga ett API
         // io, till för att skicka meddelanden till andra
-        // socket, till flr att prata med nuvarande, current, användare
+        // socket, till för att prata med nuvarande, current, användare
         // msg, innehåller användarens kommando
         })
 
