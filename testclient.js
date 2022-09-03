@@ -1,4 +1,4 @@
-/* const socket = io();
+const socket = io();
 
 socket.on("newSocketConnected", (socketId) => {
     console.log("New socket connecter:" + socketId)

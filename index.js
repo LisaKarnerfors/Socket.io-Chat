@@ -1,6 +1,7 @@
 import { createServer } from "http";
 import { Server } from "socket.io";
 import express from "express";
+import { handlerMessage } from "./API.js"
 
 const app = express()
 const httpServer = createServer(app);
@@ -13,7 +14,15 @@ app.use("/", express.static("./client"))
 
 io.on("connection", (socket) => {
     console.log("Socket has connected: " + socket.id)
-
+    io.emit("userConnected", socket.id)
+    socket.on("msg", (msg) => {
+        handlerMessage(io, socket, msg)
+        
+        // i denna filen är det dessa 3 som är viktiga för att bygga ett API
+        // io, till för att skicka meddelanden till andra
+        // socket, till flr att prata med nuvarande, current, användare
+        // msg, innehåller användarens kommando
+        })
 })
 
 /* io.on("connection", (socket) => {
