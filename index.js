@@ -15,6 +15,7 @@ app.use("/", express.static("./client"))
 io.on("connection", (socket) => {
     console.log("Socket has connected: " + socket.id)
     io.emit("userConnected", socket.id)
+    
     socket.on("msg", (msg) => {
         handlerMessage(io, socket, msg)
         
@@ -23,6 +24,12 @@ io.on("connection", (socket) => {
         // socket, till flr att prata med nuvarande, current, användare
         // msg, innehåller användarens kommando
         })
+
+   /*  io.emit("newSocket", socket.id)
+    socket.emit("welcome", "Välkommen till chatten!") */
+
+    // Här kommer vi lägga till våra egna (join, leave, osv)
+
 })
 
 /* io.on("connection", (socket) => {

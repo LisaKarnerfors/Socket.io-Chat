@@ -1,5 +1,6 @@
 const socket = io();
 
+
 socket.on("userConnected", (socketId) => {
     console.log("New socket connected" + " " + socketId);
 })
@@ -17,3 +18,15 @@ socket.on("msg", (msg) => {
     messages.innerHTML += msg + "<br>"  
 })
 /* const nickname = getElementByID(saveNickname) */
+
+
+// Tar in nyckeln som ska matcha med nyckeln som kommer från servern? - samma som urlen i fetvh.
+/* socket.on("newSocket", (socketId) => { // skickar med det nya socket.Id
+    console.log("New socket connecter: " + socketId)
+})
+
+
+socket.on("welcome", (msg) => {
+    console.log(msg)
+})
+ */
