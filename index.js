@@ -14,6 +14,8 @@ app.use("/", express.static("./client"))
 
 io.on("connection", (socket) => {
     console.log("Socket has connected: " + socket.id)
+    io.emit("newSocket", socket.id)
+    socket.emit("welcome", "Välkommen till chatten!")
     io.emit("userConnected", socket.id)
     
     socket.on("msg", (msg) => {
