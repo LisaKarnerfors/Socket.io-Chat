@@ -18,16 +18,10 @@ socket.on("msg", (msgInput) => {
     messages.innerHTML += msgInput + "<br>"  
 })
 
-socket.on("msg", (msg)=>{
+/* socket.on("msg", (msg) => {
     console.log(`${msg.input} : ${msg.nickname}`)
-}) 
-//testade, fungerar inte
-/* socket.on("nickname", (nickname)=> {
-    console.log("nickname")
-    const setNickname = document.getElementById("nickname")
-    setNickname.innerHTML = nickname
 })  */
-/* const nickname = getElementByID(saveNickname) */
+
 
 
 // Tar in nyckeln som ska matcha med nyckeln som kommer från servern? - samma som urlen i fetvh.

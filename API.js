@@ -2,7 +2,7 @@ import fetch from 'node-fetch'
 
 export async function handlerMessage(io, socket, msg) {
     console.log(msg)
-    if(msg.startsWith("/cock")) {
+    if(msg.startsWith("/cocktail")) {
         const res = await fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
         const data = await res.json()
         /* console.log('Min random cocktail', data.drinks[0]) */
