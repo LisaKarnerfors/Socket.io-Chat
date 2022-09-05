@@ -8,9 +8,7 @@ const httpServer = createServer(app);
 const port = 3000;
 const io = new Server(httpServer)
 
-/* 
-
-saveNickname.getElementById(nickname) */
+/* saveNickname.getElementById(nickname) */
 app.use("/", express.static("./client"))
 
 // io lyssnare på inkommande anrop, fördefinerad (reserverat ord samt disconation)
@@ -18,10 +16,10 @@ app.use("/", express.static("./client"))
 io.on("connection", (socket) => {
     console.log("Socket usssssser has connected: " + socket.id)
     io.emit("userConnected", socket.id)
+  /*   socket.emit("welcome") */
     
     socket.on("msg", (msg) => {
         handlerMessage(io, socket, msg)
-        io.emit("msg", msg)
 
         
         // i denna filen är det dessa 3 som är viktiga för att bygga ett API
