@@ -1,6 +1,6 @@
 const socket = io();
 
-/* let nickname = "Kalle" */
+let nickname = "" 
 
 socket.on("userConnected", (socketId) => {
     console.log("New user/socket connected " + socketId);
@@ -23,6 +23,7 @@ socket.on("msg", (msgApi) => {
     messages.innerHTML += msgApi + "<br>"  
     
 })
+
 
 
 /* socket.on("msg", (msg) => {
