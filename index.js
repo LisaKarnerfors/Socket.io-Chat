@@ -18,9 +18,8 @@ io.on("connection", (socket) => {
     io.emit("userConnected", socket.id)
   /*   socket.emit("welcome") */
     
-    socket.on("msg", (msg) => {
-        handlerMessage(io, socket, msg)
-
+    socket.on("msg", (msgApi) => {
+        handlerMessage(io, socket, msgApi)
         
         // i denna filen är det dessa 3 som är viktiga för att bygga ett API
         // io, till för att skicka meddelanden till andra

@@ -1,7 +1,6 @@
 const socket = io();
 
-//let nickname = "Kalle"
-
+/* let nickname = "Kalle" */
 
 socket.on("userConnected", (socketId) => {
     console.log("New user/socket connected " + socketId);
@@ -10,25 +9,25 @@ socket.on("userConnected", (socketId) => {
 
 const sendBtn = document.getElementById("msgBtn")
 sendBtn.addEventListener("click", () => {
-    const input = document.getElementById("msg")
+    const input = document.getElementById("msg")/* .value */
     console.log(input.value)
     socket.emit("msg", input.value)
-   /*  socket.emit("msg", { input, nickname }) */
+  /*  socket.emit("msg", { input, nickname }) */ // Det här gör att det crashar....
     
 }) 
 
 
-socket.on("msg", (msg) => {
-    console.log(msg)
+socket.on("msg", (msgApi) => {
+    console.log(msgApi)
     const messages = document.getElementById("receivedMsg") 
-    messages.innerHTML += msg + "<br>"  
+    messages.innerHTML += msgApi + "<br>"  
     
 })
 
 
-/* socket.on("msg", (msg) => {
+/*  socket.on("msg", (msg) => {
     console.log(`${msg.input} : ${msg.nickname}`)
-}) */
+})  */
 
 
 /* const nickname = getElementByID(saveNickname) */
