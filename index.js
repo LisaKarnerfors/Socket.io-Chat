@@ -8,18 +8,21 @@ const httpServer = createServer(app);
 const port = 3000;
 const io = new Server(httpServer)
 
+/* 
+
+saveNickname.getElementById(nickname) */
 app.use("/", express.static("./client"))
 
 // io lyssnare på inkommande anrop, fördefinerad (reserverat ord samt disconation)
 
 io.on("connection", (socket) => {
-    console.log("Socket has connected: " + socket.id)
-    io.emit("newSocket", socket.id)
-    socket.emit("welcome", "Välkommen till chatten!")
+    console.log("Socket usssssser has connected: " + socket.id)
     io.emit("userConnected", socket.id)
     
     socket.on("msg", (msg) => {
         handlerMessage(io, socket, msg)
+        io.emit("msg", msg)
+
         
         // i denna filen är det dessa 3 som är viktiga för att bygga ett API
         // io, till för att skicka meddelanden till andra
@@ -33,6 +36,7 @@ io.on("connection", (socket) => {
     // Här kommer vi lägga till våra egna (join, leave, osv)
 
 })
+
 
 /* io.on("connection", (socket) => {
     console.log("Socket has connected:" + socket.Id) // grunden för API:t - vi ska arbeta i denna ccallback-funktioner (socket.on socket on message..)

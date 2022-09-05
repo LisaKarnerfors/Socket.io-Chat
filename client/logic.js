@@ -1,5 +1,5 @@
 const socket = io();
-
+let nickname = "Lisa"
 
 socket.on("userConnected", (socketId) => {
     console.log("New user/socket connected " + socketId);
@@ -7,16 +7,26 @@ socket.on("userConnected", (socketId) => {
 
 const sendBtn = document.getElementById("msgBtn")
 sendBtn.addEventListener("click", () => {
-    const input = document.getElementById("msg")
-    console.log(input.value)
-    socket.emit("msg", input.value)
+    const input = document.getElementById("msg").value
+    console.log(input)
+    socket.emit("msg", {input, nickname})
     
 })
-socket.on("msg", (msg) => {
-    console.log(msg)
+socket.on("msg", (msgInput) => {
+    console.log(msgInput) 
     const messages = document.getElementById("receivedMsg") 
-    messages.innerHTML += msg + "<br>"  
+    messages.innerHTML += msgInput + "<br>"  
 })
+
+socket.on("msg", (msg)=>{
+    console.log(`${msg.input} : ${msg.nickname}`)
+}) 
+//testade, fungerar inte
+/* socket.on("nickname", (nickname)=> {
+    console.log("nickname")
+    const setNickname = document.getElementById("nickname")
+    setNickname.innerHTML = nickname
+})  */
 /* const nickname = getElementByID(saveNickname) */
 
 
