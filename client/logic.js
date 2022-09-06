@@ -1,19 +1,29 @@
 const socket = io();
 
-let nickname = "" 
+let nickname = "";
+
+
+const sentMsg = () => {
+
+} 
 
 socket.on("userConnected", (socketId) => {
     console.log("New user/socket connected " + socketId);
 })
 
 
+// Relaterat till nickname
+document.getElementById("saveNameBtn").addEventListener("click", () => {
+    const msg = document.getElementById("name").value
+    socket.emit("msg", msg, nickname) 
+})
+
+
 const sendBtn = document.getElementById("msgBtn")
 sendBtn.addEventListener("click", () => {
-    const input = document.getElementById("msg")/* .value */
-  /*   console.log(input.value) */
-    socket.emit("msg", input.value)
-  /*  socket.emit("msg", { input, nickname }) */ // Det här gör att det crashar....
-    input.value = ""
+    const input = document.getElementById("msg").value 
+    socket.emit("msg", input, nickname)
+    input.value = "";
 }) 
 
 msg.addEventListener('input', (e) => {
@@ -31,24 +41,11 @@ msg.addEventListener('input', (e) => {
      }
    });
 
+
 socket.on("msg", (msgApi) => {
-/*     console.log(msgApi) */
     const messages = document.getElementById("receivedMsg") 
     messages.innerHTML += msgApi + "<br>"  
-    
 })
 
 
 
-/* socket.on("msg", (msg) => {
-    console.log(`${msg.input} : ${msg.nickname}`)
-})  */
-
-
-
-
-// Tar in nyckeln som ska matcha med nyckeln som kommer från servern? - samma som urlen i fetvh.
-/* socket.on("newSocket", (socketId) => { // skickar med det nya socket.Id
-    console.log("New socket connecter: " + socketId)
-})
-*/
