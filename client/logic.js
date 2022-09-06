@@ -23,6 +23,7 @@ msg.addEventListener('input', (e) => {
     }
    }, false);
   
+   //msgBtn posted on enter click
    let input = document.getElementById("msg");
    input.addEventListener("keypress", function(event) {
      if (event.key === "Enter") {
@@ -32,10 +33,9 @@ msg.addEventListener('input', (e) => {
    });
 
 socket.on("msg", (msgApi) => {
-/*     console.log(msgApi) */
+    console.log(msgApi)
     const messages = document.getElementById("receivedMsg") 
     messages.innerHTML += msgApi + "<br>"  
-    
 })
 
 
