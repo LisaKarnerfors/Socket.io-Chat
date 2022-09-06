@@ -1,8 +1,5 @@
 const socket = io();
-
 let nickname = "";
-
-
 const sentMsg = () => {
 
 } 
@@ -23,7 +20,7 @@ const sendBtn = document.getElementById("msgBtn")
 sendBtn.addEventListener("click", () => {
     const input = document.getElementById("msg").value 
     socket.emit("msg", input, nickname)
-    input.value = "";
+    input.value = ""
 }) 
 
 msg.addEventListener('input', (e) => {
@@ -34,12 +31,12 @@ msg.addEventListener('input', (e) => {
    }, false);
   
    //msgBtn posted on enter click
-   let input = document.getElementById("msg");
-   input.addEventListener("keypress", function(event) {
+   let sendWithEnterKey = document.getElementById("msg");
+   sendWithEnterKey.addEventListener("keypress", function(event) {
      if (event.key === "Enter") {
        event.preventDefault();
        document.getElementById("msgBtn").click();
-     }
+    }
    });
 
 
