@@ -6,23 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/socket.io/socket.io.js"></script>
     <script defer src="./logic.js"></script>
+    <link href="style.css" rel="stylesheet">
 
     <title>Chatt</title>
 </head>
 <body>
+
+<header>
     <h1>Chatt</h1>
-    <input id="nickname" placeholder="Skriv ditt nickname" type="text">
-    <button id="saveNickname">Spara nickname</button>
-    <br>
-    <br>
-    <input id="room" placeholder="Rum att gå med i" type="text">
-    <button id="roomBtn">Gå med i rum</button>
-    <br>
-    <br>
-    <input id="msg" placeholder="Skriv meddelande" type="text">
-    <button id="msgBtn">Skicka meddelande</button>
-    <br>
-    <br>
-    <div id="receivedMsg"></div>
+</header>
+
+<main>
+    <div class="container">
+        <div class="nameBox">
+            <input id="name" placeholder="Skriv ditt användarnamn" type="text">
+            <button id="saveNameBtn">Spara användarnamn</button>    
+        </div>
+
+        <div class="msgBox">
+            <div id="receivedMsg"></div>
+
+            <input id="msg" placeholder="Skriv meddelande" type="text">
+            <button id="msgBtn">Skicka meddelande</button>
+        </div> 
+    </div>
+</main>
+
 </body>
 </html>
+
+<!--     <input id="room" placeholder="Rum att gå med i" type="text">
+    <button id="roomBtn">Gå med i rum</button> -->
