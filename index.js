@@ -10,35 +10,25 @@ const io = new Server(httpServer)
 
 app.use("/", express.static("./client"))
 
-// io lyssnare på inkommande anrop, fördefinerad (reserverat ord samt disconation)
 
 io.on("connection", (socket) => {
     console.log("Socket user has connected: " + socket.id)
     io.emit("userConnected", socket.id)
-  /*   socket.emit("welcome")  */
+    socket.emit("welcome", "Välkommen till chatten..")
     
     socket.on("msg", (msgApi) => {
         handlerMessage(io, socket, msgApi)
+        socket.nickname = msgApi.nickname
         
         // i denna filen är det dessa 3 som är viktiga för att bygga ett API
         // io, till för att skicka meddelanden till andra
         // socket, till för att prata med nuvarande, current, användare
         // msgApi, innehåller användarens kommando
+
+        // Här kommer vi lägga till våra egna (join, leave, osv) - I samma???
         })
 
-
-    // Här kommer vi lägga till våra egna (join, leave, osv)
-
 })
-
-
-/* io.on("connection", (socket) => {
-    console.log("Socket has connected:" + socket.Id) // grunden för API:t - vi ska arbeta i denna ccallback-funktioner (socket.on socket on message..)
-}) */
-
-// On lyssnar
-
-// Emit skickar
 
 
 httpServer.listen(port, () => {
