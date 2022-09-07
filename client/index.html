@@ -8,32 +8,40 @@
     <script defer src="./logic.js"></script>
     <link href="style.css" rel="stylesheet">
 
-    <title>Chatt</title>
+    <title> Chat Interface</title>
 </head>
 <body>
 
+
 <header>
-    <h1>Chatt</h1>
+    <h1>Chat Interface</h1>
+    <div class="nameBox">
+        <input id="name" placeholder="Skriv ditt användarnamn" type="text">
+        <button id="saveNameBtn">Spara</button>    
+    </div>
 </header>
 
 <main>
-    <div class="container">
-        <div class="nameBox">
-            <input id="name" placeholder="Skriv ditt användarnamn" type="text">
-            <button id="saveNameBtn">Spara användarnamn</button>    
-        </div>
 
-        <div class="msgBox">
-            <div id="receivedMsg"></div>
-
-            <input id="msg" placeholder="Skriv meddelande" type="text">
-            <button id="msgBtn">Skicka meddelande</button>
-        </div> 
+    <img class="img" src="/client/assets/gbg.jpg" alt=""> 
+    
+    <div class="chat-container">
+        <ul class="chat">
+            <li class="message-left">
+                
+                <!-- <div class="msgBox"> -->
+                    <div id="receivedMsg"></div>
+                <!-- </div>  -->
+            </li>
+            <li class="message-right">
+               
+            </li>
+        </ul>
+            <input id="msg" class="text-input" placeholder="Skriv nytt meddelande" type="text">
+            <span></span>
+            <button id="msgBtn">Skicka</button>
     </div>
 </main>
 
 </body>
 </html>
-
-<!--     <input id="room" placeholder="Rum att gå med i" type="text">
-    <button id="roomBtn">Gå med i rum</button> -->
