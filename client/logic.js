@@ -17,10 +17,12 @@ document.getElementById("saveNameBtn").addEventListener("click", () => {
 
 
 const sendBtn = document.getElementById("msgBtn")
-sendBtn.addEventListener("click", () => {
-    const input = document.getElementById("msg").value 
-    socket.emit("msg", input, nickname)
-    input.value = ""
+sendBtn.addEventListener("click", (e) => {
+    e.preventDefault()
+    const input = document.getElementById("msg")
+    const inputForm = input.value
+    socket.emit("msg", inputForm, nickname)
+    input.value = "";
 }) 
 
 msg.addEventListener('input', (e) => {
@@ -43,7 +45,7 @@ msg.addEventListener('input', (e) => {
 socket.on("msg", (msgApi) => {
     console.log(msgApi)
     const messages = document.getElementById("receivedMsg") 
-    messages.innerHTML += msgApi + "<br>"  
+    messages.innerHTML += msgApi + nickname   
 })
 
 
