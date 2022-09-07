@@ -13,6 +13,10 @@ export async function handlerMessage(io, socket, msgApi) {
     io.emit("msg", msgApi)
 }
 
+
+// Lägg till API med fler drinkar..
+
+// Ta bort? 
 export async function emojiHandler(io, socket, msgEmoji) {
 const res = await fetch ('https://mojitok-mojitok-emoticons-v1.p.rapidapi.com/emoticons?text=%3CREQUIRED%3E&language=en', {
     
