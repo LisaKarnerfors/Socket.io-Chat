@@ -12,26 +12,25 @@
 </head>
 <body>
 
+    <div class="hero-img"></div> 
 
+    </div>
 <header>
     <h1>Chat Interface</h1>
+</header>
+
+<main>
     <div class="nameBox">
         <input id="name" placeholder="Skriv ditt användarnamn" type="text">
         <button id="saveNameBtn">Spara</button>    
     </div>
-</header>
-
-<main>
-
-    <img class="img" src="/client/assets/gbg.jpg" alt=""> 
     
     <div class="chat-container">
         <ul class="chat">
             <li class="message-left">
-                
-                <!-- <div class="msgBox"> -->
-                    <div id="receivedMsg"></div>
-                <!-- </div>  -->
+
+                <!-- Gör detta dynamiskt??? -->
+                <div id="receivedMsg"></div>
             </li>
             <li class="message-right">
                
@@ -39,7 +38,7 @@
         </ul>
             <input id="msg" class="text-input" placeholder="Skriv nytt meddelande" type="text">
             <span></span>
-            <button id="msgBtn">Skicka</button>
+            <div id="msgBtn"></div>
     </div>
 </main>
 

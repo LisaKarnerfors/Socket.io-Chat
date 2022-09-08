@@ -14,7 +14,21 @@ export async function handlerMessage(io, socket, msgApi) {
 }
 
 
-// Lägg till API med fler drinkar..
+export async function handlerDrinks(io, socket, msgDrink) {
+    console.log(msgDrink)
+    if(msgDrink.startsWith("/")) {
+        const res = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a")
+        const data = await res.json()
+     
+        //const drink = data.drinks[0]
+        //console.log(drink.strDrink)
+        //msg = drink.strDrink
+    }
+    io.emit("msg", msgDrink)
+
+} 
+
+
 
 // Ta bort? 
 export async function emojiHandler(io, socket, msgEmoji) {
