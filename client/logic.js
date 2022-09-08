@@ -47,10 +47,19 @@ sendMsg.addEventListener("click", (e) => {
 }) 
 
 
-const msgAPi = msg.addEventListener('input', (e) => { // ifsats för att få ut fler val när man kör kommandon / - byt api?
+const msgApi = msg.addEventListener('input', (e) => { // ifsats för att få ut fler val när man kör kommandon / - byt api?
     if (e.target.value == "/") {
         const input = document.getElementById("msg")
-        input.value = "/cocktail"
+        
+        if (input.value == "/") {
+        const commando = document.getElementById("commando") 
+        commando.innerText = "Hej! Skriv kommando /cocktail för att få upp random cocktail namn."
+        
+    }else  {
+        const commando = document.getElementById("commando") 
+        commando.innerText = ""
+    }
+    
     }
    }, false);
 
