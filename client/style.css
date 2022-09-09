@@ -56,7 +56,6 @@ h1 {
 }
 
 .nameBox {
-	/* background-color: rgba(0, 0, 0, 0.4); */
 	border-radius: 25px;
 	box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.7);
 	overflow: hidden;
@@ -74,7 +73,7 @@ h1 {
     margin-bottom: 50px;
 }
 
-/* #receivedMsg {
+/*  #receivedMsg {
 	background-color: rgba(255, 255, 255, 0.9);
 	border-radius: 50px;
 	box-shadow: 0px 15px 5px 0px rgba(0,0,0,0.5);
@@ -83,7 +82,7 @@ h1 {
     padding: 20px;
 
     float:left;
-} */
+}  */
 
 #message-left {
 	padding: 15px 20px 15px 70px; 
@@ -153,8 +152,8 @@ h1 {
 
 
 /* TEST */
-/* 
-.message-area {
+
+/* .message-area {
     height: 80%;
     padding: 3px;
     overflow: auto;
@@ -195,4 +194,4 @@ h1 {
     height: 8px;
     float: left;
 }
- */
+  */

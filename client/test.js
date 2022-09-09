@@ -1,78 +1,54 @@
 
-// Kolla igenom detta...
+/* async function onLoad() {
+    await loadElement()
+ } */
+ 
+/* 
 socket.on('message-from-others', function(msg) {
+    const messageContainer = document.getElementById("message-area")
 
-    const  messageContainer = document.getElementById("message-area").value
-   
-    messageElement = document.createElement("div")
-    messageElement.classList.add("message-box-others-message-box")
+        let messageElement = document.createElement("div")
+        messageElement.classList.add("message-others")
 
-    messageOthers = document.createElement("div")
-    messageOthers.classList.add("message-others-message")
+        let text = document.createElement("p")
+        text.innerHTML += message
+        messageElement.append(text) 
 
-    separator = document.createElement("div")
-    separator.classList.add("separator")
+        messageContainer.append(messageElement)
+        //document.getElementById("message-area").innerHTML += message; 
 
-    messageContainer.append(messageElement)
-    messageContainer.append(messageOthers)
-    messageContainer.append(separator)
-
-    document.getElementById("message-area").innerHTML += message;
-
-    console.log(msg)
+        console.log(msg)
 })
 
-// SE ÖVER DETTA 9e
+
 function sendMessage(message) {
+    const messageForm = document.getElementById("message")
 
-    let messageForm = document.getElementById("message").value
-   
     let element = document.createElement("div")
-    element.classList.add("message-box-my-message-box")
-    element.innerHTML += message + "<br>"  
+    element.classList.add("message-my")
 
-    let messageMy = document.createElement("div")
-    messageMy.classList.add("message-my-message")
+    let myText = document.createElement("p")
+    myText.innerHTML += message        
+    element.append(myText) 
 
-    let separatorTwo = document.createElement("div")
-    separatorTwo.classList.add("separator")
-
-    // Is not a function???
     messageForm.append(element)
-    messageForm.append(messageMy)
-    messageForm.append(separator)
-
-    
-
-   /*  var message = document.getElementById("typing-box").value;
-    var element = 
-    
-    '<div class="message-box my-message-box">' +
-                    '<div class="message my-message"> ' + message + ' </div>' +
-                    '<div class="separator"></div>' +
-                '</div>';
-                
-    document.getElementById("message-area").innerHTML += element;
-    document.getElementById("typing-box").value = ""; */
-    
     socket.emit('codeboard-message', message);
-}
+}  */
 
-// Båda socketsarna hamnar här, fixa så de är olika funktioner?? 
-function renderMessage(message) {
-    const messages = document.getElementById("receivedMsg") 
-    messages.innerHTML += message + "<br>"  
-}
 
-const sendMsg = document.getElementById("msgBtn")
-sendMsg.addEventListener("click", (e) => {
+   // Ta bort??
+/* const addUser = document.getElementById("saveNameBtn")
+addUser.addEventListener("click", (e) => { 
     e.preventDefault()
-    const input = document.getElementById("message")
-        const inputForm = input.value
-        socket.emit("msg", inputForm)
-        input.value = "";
-})
+    const msg = document.getElementById("name").value
+    socket.emit("msg", msg) 
+
+    appendMessage("Välkommen")
+    socket.emit("new-user", (name)) // skickar till servern
+    // msg.value = ""; 
+
+    //if (msg.value.length <= 0) { } else { } 
+})  */
 
 
-
-
+/* window.addEventListener('load', onLoad)  */
