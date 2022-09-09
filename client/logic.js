@@ -1,7 +1,12 @@
 const socket = io();
 
-const messageForm = document.getElementById("chat")
-const messageInput = document.getElementById("message")
+/* const messageForm = document.getElementById("chat")
+const messageInput = document.getElementById("message") */
+
+async function onLoad() {
+    await loadElement()
+ }
+
 
 const name = prompt('Fyll i användarnamn för att ansluta till chatten!')
 renderMessage("Välkommen")
@@ -22,19 +27,53 @@ socket.on("user-connected", name => {
 socket.on("msg", (message)  => {
     renderMessage(`${message.name}: ${message.message}`)
  }) 
-
+// Kopplad till API
+socket.on("msgApi", (msgApi) => {
+    const messages = document.getElementById("receivedMsg") 
+    messages.innerHTML += msgApi + "<br>"  
+    console.log(msgApi)
+ }) 
 
 function renderMessage(message) {
     const messages = document.getElementById("receivedMsg") 
     messages.innerHTML += message + "<br>"  
 }
 
+/* const loadElement = async (event) => {
+    const messageContainer = document.getElementById("message-area")
+
+        let messageElement = document.createElement("div")
+        messageElement.classList.add("message-others")
+
+        let text = document.createElement("p")
+        text.innerHTML += message
+        messageElement.append(text) 
+
+        messageContainer.append(messageElement)
+        //document.getElementById("message-area").innerHTML += message; 
+} */
+
+
+/* function sendMessage(message) {
+    const messageForm = document.getElementById("message")
+
+    let element = document.createElement("div")
+    element.classList.add("message-my")
+
+    let myText = document.createElement("p")
+    myText.innerHTML += message        
+    element.append(myText) 
+
+    messageForm.append(element)
+    socket.emit('codeboard-message', message);
+} */
 
 const sendMsg = document.getElementById("msgBtn")
 sendMsg.addEventListener("click", (e) => {
     e.preventDefault()
     const input = document.getElementById("message")
         const inputForm = input.value
+        socket.emit("msgApi", inputForm)
         socket.emit("msg", inputForm) 
         input.value = "";
 }) 
@@ -82,3 +121,6 @@ addUser.addEventListener("click", (e) => {
 
     //if (msg.value.length <= 0) { } else { } 
 })  */
+
+
+window.addEventListener('load', onLoad) 

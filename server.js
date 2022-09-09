@@ -24,6 +24,7 @@ io.on("connection", (socket) => {
 
     socket.on("msgApi", (msgApi) => { // Hur får vi det att funka med commandot?
         handlerMessage(io, socket, msgApi)
+       /*  io.emit("msgApi", msgApi) */
    }) 
     
    socket.on("msg", (message) => {
@@ -31,11 +32,11 @@ io.on("connection", (socket) => {
         io.emit("msg", { message: message, name: users[socket.id] }) 
 })
 
-/*
-    socket.on('codeboard-message', (msg) => {
-        console.log('message: ' + msg);
-        socket.broadcast.emit('message-from-others', msg)
-      }); */
+socket.on('codeboard-message', (msg) => {
+    console.log('message: ' + msg);
+	socket.broadcast.emit('message-from-others', msg);
+  });
+
 })
 
 

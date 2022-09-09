@@ -1,30 +1,3 @@
-const socket = io();
-
-
-const name = prompt('Skriv in användarnamn för att börja chatta!')
-renderMessage("Välkommen!")
-socket.emit("new-user", (name)) 
-
-
-// Socket on
-socket.on("userConnected", (socketId) => {
-    console.log("New user/socket connected " + socketId);
-})
-
-/* socket.on("msgApi", (msgApi) => {
-    console.log(msgApi)
-}) */
-
-// Tar in name och meddelande
-socket.on("msg", (message)  => {
-   renderMessage(`${message.name}: ${message.message}`)
-}) 
-
-// När en user connectar
-socket.on("user-connected", name => {
-    renderMessage(`${name} är ansluten!`)
-}) 
-
 
 // Kolla igenom detta...
 socket.on('message-from-others', function(msg) {
@@ -100,48 +73,6 @@ sendMsg.addEventListener("click", (e) => {
         input.value = "";
 })
 
-// Ta bort??
-/* const addNickname = document.getElementById("saveNameBtn")
-addNickname.addEventListener("click", (e) => { 
-    e.preventDefault()
-    const msg = document.getElementById("name").value
-    socket.emit("msg", msg) 
-
-    appendMessage("Välkommen")
-    socket.emit("new-user", (name)) // skickar till servern
-    // msg.value = ""; 
-
-    //if (msg.value.length <= 0) { } else { } 
-})  */
 
 
 
-
-// API
-const msgApi = message.addEventListener('input', (e) => { 
-    if (e.target.value == "/") {
-        const input = document.getElementById("message")
-        
-        if (input.value == "/") { /* Fortsätt här med kommando */
-        const commando = document.getElementById("commando") // Lägg till add and remove... ("hidden"), ("active")
-        commando.innerText = "Hej! Skriv kommando /cocktail för att få upp random cocktail namn."
-        
-         }else  {
-        const commando = document.getElementById("commando") 
-        commando.innerText = ""
-    }
-    
-    }
-   }, false);
-
-
-   let sendWithEnterKey = document.getElementById("message");
-   sendWithEnterKey.addEventListener("keypress", function(e) {
-     if (e.key === "Enter") {
-       e.preventDefault();
-       document.getElementById("msgBtn").click();
-    }
-   });
-
-
-/*   window.addEventListener("load", sendMessage);  */
