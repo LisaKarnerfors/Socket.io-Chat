@@ -144,4 +144,4 @@ const msgApi = message.addEventListener('input', (e) => {
    });
 
 
-  window.addEventListener("load", sendMessage); 
+/*   window.addEventListener("load", sendMessage);  */

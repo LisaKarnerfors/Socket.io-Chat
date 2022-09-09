@@ -3,39 +3,31 @@ const socket = io();
 const messageForm = document.getElementById("chat")
 const messageInput = document.getElementById("message")
 
-
-const name = prompt('What is your name?')
-appendMessage("Välkommen")
+const name = prompt('Fyll i användarnamn för att ansluta till chatten!')
+renderMessage("Välkommen")
 socket.emit("new-user", (name)) 
 
 
-// Socket on
+// Socket on - skapar en lyssnare
 socket.on("userConnected", (socketId) => {
     console.log("New user/socket connected " + socketId);
 })
 
-socket.on("msg", message  => {
-    appendMessage(`${message.name}: ${message.message}`)
-}) 
-
+// När en user connectar
 socket.on("user-connected", name => {
-    appendMessage(`${name} är ansluten!`)
+    renderMessage(`${name} är ansluten!`)
 }) 
 
-// Ta bort??
-/* const addNickname = document.getElementById("saveNameBtn")
-addNickname.addEventListener("click", (e) => { 
-    e.preventDefault()
-    const msg = document.getElementById("name").value
-    socket.emit("msg", msg) 
+// Tar in namn och meddelande
+socket.on("msg", (message)  => {
+    renderMessage(`${message.name}: ${message.message}`)
+ }) 
 
-    appendMessage("Välkommen")
-    socket.emit("new-user", (name)) // skickar till servern
-    // msg.value = ""; 
 
-    //if (msg.value.length <= 0) { } else { } 
-})  */
-
+function renderMessage(message) {
+    const messages = document.getElementById("receivedMsg") 
+    messages.innerHTML += message + "<br>"  
+}
 
 
 const sendMsg = document.getElementById("msgBtn")
@@ -43,21 +35,9 @@ sendMsg.addEventListener("click", (e) => {
     e.preventDefault()
     const input = document.getElementById("message")
         const inputForm = input.value
-        socket.emit("msg", inputForm)
+        socket.emit("msg", inputForm) 
         input.value = "";
-
-    /* if(inputForm.value.length === 0) {
-    } else {
-        const messages = document.getElementById("receivedMsg") 
-        messages.innerHTML = "Var vänlig fyll i användarnamn"
-    } */
 }) 
-
-function appendMessage(message) {
-    const messages = document.getElementById("receivedMsg") 
-    //  if (socket.id === message.id) { } 
-    messages.innerHTML += message + "<br>" 
-}
 
 
 // API
@@ -65,7 +45,7 @@ const msgApi = message.addEventListener('input', (e) => {
     if (e.target.value == "/") {
         const input = document.getElementById("message")
         
-        if (input.value == "/") { /* Fortsätt här med kommando */
+        if (input.value == "/") { 
         const commando = document.getElementById("commando") 
         commando.innerText = "Hej! Skriv kommando /cocktail för att få upp random cocktail namn."
         
@@ -84,5 +64,21 @@ const msgApi = message.addEventListener('input', (e) => {
        e.preventDefault();
        document.getElementById("msgBtn").click();
     }
+
    });
 
+
+
+   // Ta bort??
+/* const addUser = document.getElementById("saveNameBtn")
+addUser.addEventListener("click", (e) => { 
+    e.preventDefault()
+    const msg = document.getElementById("name").value
+    socket.emit("msg", msg) 
+
+    appendMessage("Välkommen")
+    socket.emit("new-user", (name)) // skickar till servern
+    // msg.value = ""; 
+
+    //if (msg.value.length <= 0) { } else { } 
+})  */
