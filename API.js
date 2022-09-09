@@ -5,8 +5,7 @@ export async function handlerMessage(io, socket, msgApi) {
     if(msgApi.startsWith("/cocktail")) {
         const res = await fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
         const data = await res.json()
-        /* ("https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a") */
-        
+      
         const drink = data.drinks[0]
         console.log(drink.strDrink)
         msgApi = drink.strDrink
