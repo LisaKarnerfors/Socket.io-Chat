@@ -22,10 +22,10 @@ socket.on("msg", (message)  => {
  }) 
 
 
-socket.on("msgApi", (msgApi) => {
+/* socket.on("msgApi", (msgApi) => {
     const messages = document.getElementById("receivedMsg") 
     messages.innerHTML += msgApi + "<br>"  
- }) 
+ })  */
 
 
 function renderMessage(message) {

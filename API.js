@@ -10,7 +10,8 @@ export async function handlerMessage(io, socket, msgApi) {
         console.log(drink.strDrink)
         msgApi = drink.strDrink
     }
-    io.emit("msgApi", msgApi)
+    return 
+    /* io.emit("msgApi", msgApi) */
 }
 
 
