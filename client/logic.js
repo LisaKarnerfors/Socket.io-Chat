@@ -46,20 +46,17 @@ sendMsg.addEventListener("click", (e) => {
 
 
 // API relaterat
-const msgApi = message.addEventListener('input', (e) => { 
-    if (e.target.value == "/") {
+const msgApi = message.addEventListener('keyup', (e) => { 
+    if (e.target.value.startsWith("/")) {
         const input = document.getElementById("message")
-        
-        if (input.value == "/") { 
         const commando = document.getElementById("commando") 
         commando.innerText = "Hej! Skriv kommando /cocktail för att få upp random cocktail namn."
         
-    }else  {
+    } else  {
         const commando = document.getElementById("commando") 
         commando.innerText = ""
     }
     
-    }
    }, false);
 
 
