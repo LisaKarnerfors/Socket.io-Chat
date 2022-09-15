@@ -22,16 +22,15 @@ socket.on("msg", (message)  => {
  }) 
 
 
-/* socket.on("msgApi", (msgApi) => {
-    const messages = document.getElementById("receivedMsg") 
-    messages.innerHTML += msgApi + "<br>"  
- })  */
-
 
 function renderMessage(message) {
     const messages = document.getElementById("receivedMsg") 
-    messages.innerHTML += message + "<br>"  
+    let element = document.createElement("p") 
+    element.classList.add("outputMsg")
+    element.innerHTML += message + "<br>"  
+    messages.append(element)
 }
+
 
 const sendMsg = document.getElementById("msgBtn")
 sendMsg.addEventListener("click", (e) => {
@@ -39,13 +38,14 @@ sendMsg.addEventListener("click", (e) => {
     
     const input = document.getElementById("message")
         const inputForm = input.value
-        socket.emit("msgApi", inputForm)
+        // socket.emit("msgApi", inputForm) - Detta ska bort och vi ska bara använda socket.emit("msg")  
         socket.emit("msg", inputForm) 
         input.value = "";
 }) 
 
 
 // API relaterat
+
 const msgApi = message.addEventListener('keyup', (e) => { 
     if (e.target.value.startsWith("/")) {
         const input = document.getElementById("message")
@@ -57,6 +57,7 @@ const msgApi = message.addEventListener('keyup', (e) => {
         commando.innerText = ""
     }
     
+
    }, false);
 
 

@@ -5,7 +5,7 @@ import { handlerMessage } from "./API.js"
 
 const app = express()
 const httpServer = createServer(app);
-const port = 3000;
+const port = 3000; 
 const io = new Server(httpServer)
 
 app.use("/", express.static("./client"))
@@ -25,13 +25,10 @@ io.on("connection", (socket) => {
     socket.on("msg", async (message) => { 
         message = await handlerMessage(message)
         socket.broadcast.emit("chat-message", message)
+
         io.emit("msg", { message: message, name: users[socket.id] }) 
 })
 
-    /* socket.on('codeboard-message', (msg) => {
-        console.log('message: ' + msg);
-        socket.broadcast.emit('message-from-others', msg)
-      });  */
 })
 
 

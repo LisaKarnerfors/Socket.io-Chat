@@ -12,6 +12,11 @@ body {
 	background-position: center	center;
 }
 
+.active {
+	display: none;
+}
+
+
 img {
     padding-top: 40px;
     display: block;
@@ -73,50 +78,22 @@ h1 {
     margin-bottom: 50px;
 }
 
-/*  #receivedMsg {
+.outputMsg {
 	background-color: rgba(255, 255, 255, 0.9);
 	border-radius: 50px;
 	box-shadow: 0px 15px 5px 0px rgba(0,0,0,0.5);
 	position: relative;
 	margin-bottom: 30px;
     padding: 20px;
-
-    float:left;
-}  */
-
-#message-left {
-	padding: 15px 20px 15px 70px; 
-    display: flex;
-    justify-content: flex-start;
-
-    background-color: rgba(255, 255, 255, 0.9);
-	border-radius: 50px;
-	box-shadow: 0px 15px 5px 0px rgba(0,0,0,0.5);
-	position: relative;
-	margin-bottom: 30px;
-}
-
-#message-right {
-    display: flex;
-    justify-content: flex-end;
-	/* align-self: flex-end; */
-	/* padding: 15px 70px 15px 20px; */
-
-    background-color: rgba(255, 255, 255, 0.9);
-	border-radius: 50px;
-	box-shadow: 0px 15px 5px 0px rgba(0,0,0,0.5);
-	position: relative;
-	margin-bottom: 30px;
-}
+} 
 
 #commando {
     background-color: white;
     color: black;
-    padding: 10px;
+    padding: 5px;
     width: 320px;
 	max-width: 100%;
     margin: 2px;
-
 }
 
 .message p {
@@ -149,49 +126,3 @@ h1 {
     font-size: 14px;
     margin: 5px;
 } 
-
-
-/* TEST */
-
-/* .message-area {
-    height: 80%;
-    padding: 3px;
-    overflow: auto;
-}
-
-.message-box {
-    margin-top: 10px;
-}
-
-.others-message-box {
-}
-
-.my-message-box {
-    text-align: right;
-    background: white;
-}
-
-.message {
-    max-width: 70%;
-    border-radius: 5%;
-    padding: 5px;
-    box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.2), 0 0 1rem rgba(0, 0, 0, 0.2);
-}
-
-.my-message {
-    float: right;
-    background: rgb(0 127 255);
-    color: white;
-}
-
-.others-message {
-    float: left;
-    background: white;
-}
-
-.separator {
-    width: 100%;
-    height: 8px;
-    float: left;
-}
-  */
