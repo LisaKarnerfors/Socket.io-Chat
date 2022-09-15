@@ -22,16 +22,15 @@ socket.on("msg", (message)  => {
  }) 
 
 
-/* socket.on("msgApi", (msgApi) => {
-    const messages = document.getElementById("receivedMsg") 
-    messages.innerHTML += msgApi + "<br>"  
- })  */
-
 
 function renderMessage(message) {
     const messages = document.getElementById("receivedMsg") 
-    messages.innerHTML += message + "<br>"  
+    let element = document.createElement("p") 
+    element.classList.add("outputMsg")
+    element.innerHTML += message + "<br>"  
+    messages.append(element)
 }
+
 
 const sendMsg = document.getElementById("msgBtn")
 sendMsg.addEventListener("click", (e) => {
@@ -39,7 +38,7 @@ sendMsg.addEventListener("click", (e) => {
     
     const input = document.getElementById("message")
         const inputForm = input.value
-        socket.emit("msgApi", inputForm)
+        // socket.emit("msgApi", inputForm) - Detta ska bort och vi ska bara använda socket.emit("msg")  
         socket.emit("msg", inputForm) 
         input.value = "";
 }) 
@@ -47,19 +46,32 @@ sendMsg.addEventListener("click", (e) => {
 
 // API relaterat
 const msgApi = message.addEventListener('input', (e) => { 
+
     if (e.target.value == "/") {
         const input = document.getElementById("message")
-        
+
         if (input.value == "/") { 
-        const commando = document.getElementById("commando") 
-        commando.innerText = "Hej! Skriv kommando /cocktail för att få upp random cocktail namn."
-        
-    }else  {
-        const commando = document.getElementById("commando") 
-        commando.innerText = ""
-    }
+            const commando = document.querySelector("#commando") 
+            commando.innerHTML = "Hej! Skriv kommando /cocktail för att få upp random cocktail namn."
+
+            // SE ÖVER TOGGLE-DELEN!!!!!!
+
+        /*   if(e.target.value == "/") {
+                commando.classList.toggle("active"); 
+                console.log(commando)
+            }  */
+
+           /*  if(value.length == 0 ) {
+                commando.classList.toggle("active"); 
+                console.log(commando)
+            }  */
+
+        } else {
+           /*  const commando = document.querySelector("#commando")  */
+            /* commando.innerHTML = "" */ 
+        } 
     
-    }
+    } 
    }, false);
 
 

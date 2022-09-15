@@ -5,7 +5,7 @@ import { handlerMessage } from "./API.js"
 
 const app = express()
 const httpServer = createServer(app);
-const port = 3000;
+const port = 3000; 
 const io = new Server(httpServer)
 
 app.use("/", express.static("./client"))
@@ -25,17 +25,24 @@ io.on("connection", (socket) => {
    /*  socket.on("msgApi", (msgApi) => { 
         handlerMessage(io, socket, msgApi) */ // ska ligga nedan i en if sats
   /*  })  */
-    // ska vara async await
-   socket.on("msg", (message) => { // type text eller api som parameter efter msg
+   
+
+  // HandlerMessage ska ligga i en ifsats i socket.on msg! 
+  
+   socket.on("msg", async (message, typeApi) => { // type text eller api som parameter efter msg
+   
+    // await?? 
     // villkor i en if sats, om cocktail är true eller false
-        socket.broadcast.emit("chat-message", message)
+   /* if() {
+
+   } else {
+
+   } */
+   
+    socket.broadcast.emit("chat-message", message)
         io.emit("msg", { message: message, name: users[socket.id] }) 
 })
 
-    /* socket.on('codeboard-message', (msg) => {
-        console.log('message: ' + msg);
-        socket.broadcast.emit('message-from-others', msg)
-      });  */
 })
 
 
