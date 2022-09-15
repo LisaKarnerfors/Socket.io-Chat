@@ -21,25 +21,11 @@ io.on("connection", (socket) => {
         users[socket.id] = name
         io.emit("user-connected", name)
     })
-
-   /*  socket.on("msgApi", (msgApi) => { 
-        handlerMessage(io, socket, msgApi) */ // ska ligga nedan i en if sats
-  /*  })  */
-   
-
-  // HandlerMessage ska ligga i en ifsats i socket.on msg! 
   
-   socket.on("msg", async (message, typeApi) => { // type text eller api som parameter efter msg
-   
-    // await?? 
-    // villkor i en if sats, om cocktail är true eller false
-   /* if() {
+    socket.on("msg", async (message) => { 
+        message = await handlerMessage(message)
+        socket.broadcast.emit("chat-message", message)
 
-   } else {
-
-   } */
-   
-    socket.broadcast.emit("chat-message", message)
         io.emit("msg", { message: message, name: users[socket.id] }) 
 })
 
