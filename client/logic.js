@@ -45,34 +45,16 @@ sendMsg.addEventListener("click", (e) => {
 
 
 // API relaterat
-const msgApi = message.addEventListener('input', (e) => { 
-
-    if (e.target.value == "/") {
-        const input = document.getElementById("message")
-
-        if (input.value == "/") { 
-            const commando = document.querySelector("#commando") 
-            commando.innerHTML = "Hej! Skriv kommando /cocktail för att få upp random cocktail namn."
-
-            // SE ÖVER TOGGLE-DELEN!!!!!!
-
-        /*   if(e.target.value == "/") {
-                commando.classList.toggle("active"); 
-                console.log(commando)
-            }  */
-
-           /*  if(value.length == 0 ) {
-                commando.classList.toggle("active"); 
-                console.log(commando)
-            }  */
-
-        } else {
-           /*  const commando = document.querySelector("#commando")  */
-            /* commando.innerHTML = "" */ 
-        } 
-    
+const msgApi = message.addEventListener('keyup', (e) => { 
+    const commando = document.querySelector("#commando")     
+    if (e.target.value.startsWith("/")) { 
+        commando.innerHTML = "Hej! Skriv kommando /cocktail för att få upp random cocktail namn."
+        //commando.classList.add("active"); 
+    } else {
+        commando.innerHTML = "" 
+        //commando.classList.remove("active"); 
     } 
-   }, false);
+}, false);
 
 
    let sendWithEnterKey = document.getElementById("message");

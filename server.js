@@ -1,51 +1,36 @@
-import { createServer } from "http";
-import { Server } from "socket.io";
-import express from "express";
-import { handlerMessage } from "./API.js"
-
-const app = express()
-const httpServer = createServer(app);
-const port = 3000; 
-const io = new Server(httpServer)
-
-app.use("/", express.static("./client"))
-
-const users = {}
-
-io.on("connection", (socket) => {
-    console.log("Socket user has connected: " + socket.id)
-    io.emit("userConnected", socket.id)
-    socket.emit("welcome", "Välkommen till chatten")
-
-    socket.on("new-user", (name) => {
-        users[socket.id] = name
-        io.emit("user-connected", name)
-    })
-
-   /*  socket.on("msgApi", (msgApi) => { 
-        handlerMessage(io, socket, msgApi) */ // ska ligga nedan i en if sats
-  /*  })  */
-   
-
-  // HandlerMessage ska ligga i en ifsats i socket.on msg! 
+  import { createServer } from "http";
+  import { Server } from "socket.io";
+  import express from "express";
+  import { handlerMessage } from "./API.js"
   
-   socket.on("msg", async (message, typeApi) => { // type text eller api som parameter efter msg
-   
-    // await?? 
-    // villkor i en if sats, om cocktail är true eller false
-   /* if() {
-
-   } else {
-
-   } */
-   
-    socket.broadcast.emit("chat-message", message)
-        io.emit("msg", { message: message, name: users[socket.id] }) 
-})
-
-})
-
-
-httpServer.listen(port, () => {
-    console.log("Server is running on port " + port);
-  })
+  const app = express()
+  const httpServer = createServer(app);
+  const port = 3000; 
+  const io = new Server(httpServer)
+  
+  app.use("/", express.static("./client"))
+  
+  const users = {}
+  
+  io.on("connection", (socket) => {
+      console.log("Socket user has connected: " + socket.id)
+      io.emit("userConnected", socket.id)
+      socket.emit("welcome", "Välkommen till chatten")
+  
+      socket.on("new-user", (name) => {
+          users[socket.id] = name
+          io.emit("user-connected", name)
+      })
+    
+      socket.on("msg", async (message) => { 
+          message = await handlerMessage(message)
+          socket.broadcast.emit("chat-message", message)
+          io.emit("msg", { message: message, name: users[socket.id] }) 
+        })
+        
+    })
+        
+        
+        httpServer.listen(port, () => {
+            console.log("Server is running on port " + port);
+        })
