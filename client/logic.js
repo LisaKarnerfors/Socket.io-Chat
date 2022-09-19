@@ -2,35 +2,34 @@ const socket = io();
 
 
 const name = prompt('Fyll i användarnamn för att ansluta till chatten!')
-renderMessage("Välkommen")
-socket.emit("new-user", (name)) 
+renderMessage("Välkommen" + " " + (name))
+socket.emit("new-user", (name))
 
-
-// Socket on - skapar en lyssnare
 socket.on("userConnected", (socketId) => {
     console.log("New user/socket connected " + socketId);
 })
 
-// När en user connectar
 socket.on("user-connected", name => {
     renderMessage(`${name} är ansluten!`)
 }) 
 
-// Tar in namn och meddelande
+
 socket.on("msg", (message)  => {
     renderMessage(`${message.name}: ${message.message}`)
  }) 
 
-
+window.scrollTo(300,300)
 
 function renderMessage(message) {
     const messages = document.getElementById("receivedMsg") 
+   
     let element = document.createElement("p") 
+    element.scrollTo = element.scrollHeight
     element.classList.add("outputMsg")
     element.innerHTML += message + "<br>"  
     messages.append(element)
-}
 
+}
 
 const sendMsg = document.getElementById("msgBtn")
 sendMsg.addEventListener("click", (e) => {
@@ -38,23 +37,19 @@ sendMsg.addEventListener("click", (e) => {
     
     const input = document.getElementById("message")
         const inputForm = input.value
-        // socket.emit("msgApi", inputForm) - Detta ska bort och vi ska bara använda socket.emit("msg")  
         socket.emit("msg", inputForm) 
         input.value = "";
 }) 
 
 
-// API relaterat
 const msgApi = message.addEventListener('keyup', (e) => { 
-    const commando = document.querySelector("#commando")     
-    if (e.target.value.startsWith("/")) { 
-        commando.innerHTML = "Hej! Skriv kommando /cocktail för att få upp random cocktail namn."
-        //commando.classList.add("active"); 
-    } else {
-        commando.innerHTML = "" 
-        //commando.classList.remove("active"); 
-    } 
-}, false);
+    const commando = document.querySelector("#commando")  
+        if (e.target.value.startsWith("/")) { 
+            commando.innerHTML = "Hej! Skriv kommando /cocktail för att få upp random cocktail namn."
+        } else {
+            commando.innerHTML = "" 
+        } 
+    }, false);
 
 
    let sendWithEnterKey = document.getElementById("message");

@@ -12,10 +12,6 @@ body {
 	background-position: center	center;
 }
 
-.active {
-	display: none;
-}
-
 
 img {
     padding-top: 40px;
@@ -49,6 +45,7 @@ h1 {
 	width: 320px;
 	max-width: 100%;
     height: 500px;
+	overflow: auto;
 }
 
 .chat {
@@ -83,9 +80,9 @@ h1 {
 	border-radius: 50px;
 	box-shadow: 0px 15px 5px 0px rgba(0,0,0,0.5);
 	position: relative;
-	margin-bottom: 30px;
     padding: 20px;
 } 
+
 
 #commando {
     background-color: white;
@@ -102,7 +99,7 @@ h1 {
 
 .text-input {
 	font-size: 16px;
-	position: absolute;
+	position: relative;
 	bottom: 0;
 	left: 0;
 	right: 0;
