@@ -18,10 +18,8 @@ Installation hur man startar projektet:
 Krav för godkänt:
 
 1.En fungerade chatt där man kan skriva ett kommando ”/” för att utföra en operation som integrerar med 3-part. API-anropet skall ske via er server. - CHECK
-// Vi fick inte till det att chattarna skulle vara i enskilda rutor vilket vi behöver se över. 
 
 2.Man skall kunna sätta ett eget nickname som skickas med och visas tillsammans med meddelanden. - CHECK 
-// Dock blir det dubbelt när vi skriver ut i input som vi måste se över.... 
 
 3.Git & GitHub har använts - CHECK
 

@@ -23,7 +23,7 @@ io.on("connection", (socket) => {
   })
 
   socket.on("msg", async (message) => { 
-    message = await handlerMessage(message)
+    message = await handlerMessage(message) 
     socket.broadcast.emit("chat-message", message)
     io.emit("msg", { message: message, name: users[socket.id] }) 
   })
